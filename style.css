@@ -1,0 +1,100 @@
+/* style.css - Estilos complementares mobile-first para a Lista de Compras */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  padding-bottom: env(safe-area-inset-bottom, 24px);
+}
+
+/* Otimização para toque mobile */
+button, input, select {
+  touch-action: manipulation;
+}
+
+/* Animação suave para itens da lista */
+.item-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item-card:active {
+  transform: scale(0.99);
+}
+
+.item-purchased {
+  opacity: 0.65;
+  background-color: #f8fafc;
+}
+
+.item-purchased .item-name {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+/* Checkbox customizado com toque amplo */
+.custom-checkbox {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border: 2.5px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: all 0.2s ease-in-out;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+
+.custom-checkbox:checked {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+.custom-checkbox:checked::before {
+  content: "";
+  width: 14px;
+  height: 9px;
+  border-left: 2.5px solid white;
+  border-bottom: 2.5px solid white;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+/* Barra de rolagem discreta */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+/* Toast flutuante */
+#toast {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(120%);
+}
+
+#toast.show {
+  transform: translateY(0);
+}
+
+/* Animações de Modal */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+/* Botão Flutuante ou Fixo Inferior */
+.bottom-bar {
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+}
